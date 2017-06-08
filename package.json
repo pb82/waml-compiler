@@ -1,0 +1,14 @@
+{
+  "name": "waml-compiler",
+  "version": "0.0.1",
+  "description": "Web Audio Markdown Language Compiler",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter Braun <peter-braun@gmx.net>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^7.0.27"
+  }
+}

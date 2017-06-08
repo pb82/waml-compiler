@@ -1,0 +1,1 @@
+{"version":3,"file":"BaseCompilerError.js","sourceRoot":"","sources":["../../src/errors/BaseCompilerError.ts"],"names":[],"mappings":";;AAEA,uBAA+B,SAAQ,KAAK;IACxC,YAAY,OAAe,EAAE,KAAY;QACrC,MAAM,KAAK,GAAG,KAAK,CAAC,KAAK,GAAG,KAAK,CAAC,KAAK,CAAC,MAAM,CAAC;QAC/C,KAAK,CAAC,GAAG,OAAO,OAAO,KAAK,CAAC,IAAI,IAAI,KAAK,EAAE,CAAC,CAAC;IAClD,CAAC;CACJ;AALD,8CAKC"}
