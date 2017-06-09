@@ -14,8 +14,18 @@ class JavaScriptWriter {
     writeString(value) {
         this.generated.push(`"${value}"`);
     }
+    writeGeneric(value) {
+        this.generated.push(`${value}`);
+    }
     commitCommand() {
         this.generated.push(';\n');
+    }
+    beginFunction(value) {
+        this.generated.push(`${value}(`);
+    }
+    endFunction() {
+        this.generated.push(")");
+        this.commitCommand();
     }
     toString() {
         return this.generated.join('');

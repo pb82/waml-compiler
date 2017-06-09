@@ -6,6 +6,9 @@ import {MissingPropertyError} from "../errors/MissingPropertyError";
 import {ASTNode} from "./types/ASTNode";
 import {UnexpectedTokenError} from "../errors/UnexpectedTokenError";
 import {NumberParser} from "./NumberParser";
+import {StringParser} from "./StringParser";
+import {UnknownPropertyError} from "../errors/UnknownPropertyError";
+import {ExpressionParser} from "./ExpressionParser";
 
 export class DefinitionParser extends Parser implements Parsing {
     private definedProperties: string[] = [];
@@ -36,6 +39,10 @@ export class DefinitionParser extends Parser implements Parsing {
         switch (type) {
             case "number":
                 return new NumberParser(this.tokens);
+            case "string":
+                return new StringParser(this.tokens);
+            case "expression":
+                return new ExpressionParser(this.tokens);
             default:
                 throw new UnexpectedTokenError(this.tokens.peek());
         }
@@ -49,10 +56,16 @@ export class DefinitionParser extends Parser implements Parsing {
                 break;
             }
 
-            const propertyName = this.tokens.expect(TOKEN_TYPE.NAME).value;
+            const propertyToken = this.tokens.expect(TOKEN_TYPE.NAME);
+            const propertyName = propertyToken.value;
             this.tokens.expect(TOKEN_TYPE.COLON);
 
-            const propertyType = metadata.get(propertyName).get("Type");
+            const propertyMetadata = metadata.get(propertyName);
+            if (!propertyMetadata) {
+                throw new UnknownPropertyError(propertyToken, metadata);
+            }
+
+            const propertyType = propertyMetadata.get("Type");
             const parser = this.getParserForType(propertyType);
             instance[propertyName] = parser.parse();
             this.definedProperties.push(propertyName);

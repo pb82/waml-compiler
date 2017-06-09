@@ -16,8 +16,21 @@ export class JavaScriptWriter implements Writer {
         this.generated.push(`"${value}"`);
     }
 
+    writeGeneric(value: string) {
+        this.generated.push(`${value}`);
+    }
+
     commitCommand(): void {
         this.generated.push(';\n');
+    }
+
+    beginFunction(value: string): void {
+        this.generated.push(`${value}(`);
+    }
+
+    endFunction(): void {
+        this.generated.push(")");
+        this.commitCommand();
     }
 
     toString(): string {

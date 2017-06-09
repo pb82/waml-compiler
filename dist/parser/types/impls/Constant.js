@@ -18,7 +18,7 @@ let Constant = class Constant extends Definition_1.Definition {
     }
 };
 __decorate([
-    Type_1.Type("number"),
+    Type_1.Type("expression"),
     Required_1.Required(true)
 ], Constant.prototype, "value", void 0);
 Constant = __decorate([

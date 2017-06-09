@@ -6,6 +6,9 @@ const Metadata_1 = require("../metadata/Metadata");
 const MissingPropertyError_1 = require("../errors/MissingPropertyError");
 const UnexpectedTokenError_1 = require("../errors/UnexpectedTokenError");
 const NumberParser_1 = require("./NumberParser");
+const StringParser_1 = require("./StringParser");
+const UnknownPropertyError_1 = require("../errors/UnknownPropertyError");
+const ExpressionParser_1 = require("./ExpressionParser");
 class DefinitionParser extends Parser_1.Parser {
     constructor(tokens) {
         super(tokens);
@@ -31,6 +34,10 @@ class DefinitionParser extends Parser_1.Parser {
         switch (type) {
             case "number":
                 return new NumberParser_1.NumberParser(this.tokens);
+            case "string":
+                return new StringParser_1.StringParser(this.tokens);
+            case "expression":
+                return new ExpressionParser_1.ExpressionParser(this.tokens);
             default:
                 throw new UnexpectedTokenError_1.UnexpectedTokenError(this.tokens.peek());
         }
@@ -41,9 +48,14 @@ class DefinitionParser extends Parser_1.Parser {
             if (this.tokens.peekIf(Definitions_1.TOKEN_TYPE.RBRACKET)) {
                 break;
             }
-            const propertyName = this.tokens.expect(Definitions_1.TOKEN_TYPE.NAME).value;
+            const propertyToken = this.tokens.expect(Definitions_1.TOKEN_TYPE.NAME);
+            const propertyName = propertyToken.value;
             this.tokens.expect(Definitions_1.TOKEN_TYPE.COLON);
-            const propertyType = metadata.get(propertyName).get("Type");
+            const propertyMetadata = metadata.get(propertyName);
+            if (!propertyMetadata) {
+                throw new UnknownPropertyError_1.UnknownPropertyError(propertyToken, metadata);
+            }
+            const propertyType = propertyMetadata.get("Type");
             const parser = this.getParserForType(propertyType);
             instance[propertyName] = parser.parse();
             this.definedProperties.push(propertyName);

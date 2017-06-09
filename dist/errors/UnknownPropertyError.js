@@ -5,7 +5,7 @@ class UnknownPropertyError extends BaseCompilerError_1.BaseCompilerError {
     constructor(token, expected) {
         let keys = [];
         for (let key of expected.keys()) {
-            keys.push(key.value);
+            keys.push("'" + key + "'");
         }
         const valid = keys.join(' or ');
         const expectedString = `. Expected ${valid}`;

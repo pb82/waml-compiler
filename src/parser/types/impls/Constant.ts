@@ -7,7 +7,7 @@ import {AllowAnon} from "../../../metadata/AllowAnon";
 
 @AllowAnon(false)
 export default class Constant extends Definition implements ASTNode {
-    @Type("number")
+    @Type("expression")
     @Required(true)
     public value: ASTNode;
 

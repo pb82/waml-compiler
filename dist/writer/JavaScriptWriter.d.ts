@@ -4,6 +4,9 @@ export declare class JavaScriptWriter implements Writer {
     writeVariable(name: string): void;
     writeNumber(value: number): void;
     writeString(value: string): void;
+    writeGeneric(value: string): void;
     commitCommand(): void;
+    beginFunction(value: string): void;
+    endFunction(): void;
     toString(): string;
 }

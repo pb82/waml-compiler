@@ -1,0 +1,1 @@
+{"version":3,"file":"ReferenceNode.js","sourceRoot":"","sources":["../../../../src/parser/types/impls/ReferenceNode.ts"],"names":[],"mappings":";;AAIA;IAGI,YAAY,SAAgB;QACxB,IAAI,CAAC,KAAK,GAAG,SAAS,CAAC,KAAK,CAAC;IACjC,CAAC;IAED,YAAY,CAAC,MAAc;QACvB,MAAM,CAAC,YAAY,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC;IACpC,CAAC;CACJ;AAVD,gCAUC"}
