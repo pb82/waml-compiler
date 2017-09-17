@@ -4,7 +4,10 @@ import {Type} from "../../../metadata/Type";
 import {Writer} from "../../../writer/Writer";
 import {Required} from "../../../metadata/Required";
 import {AllowAnon} from "../../../metadata/AllowAnon";
+import {IsDefinition} from "../../../metadata/IsDefinition";
 
+
+@IsDefinition(true)
 @AllowAnon(false)
 export default class Constant extends Definition implements ASTNode {
     @Type("expression")

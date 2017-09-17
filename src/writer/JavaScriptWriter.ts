@@ -16,6 +16,10 @@ export class JavaScriptWriter implements Writer {
         this.generated.push(`"${value}"`);
     }
 
+    writeBoolean(value: boolean) {
+        this.generated.push(`${value}`);
+    }
+
     writeGeneric(value: string) {
         this.generated.push(`${value}`);
     }
@@ -31,6 +35,10 @@ export class JavaScriptWriter implements Writer {
     endFunction(): void {
         this.generated.push(")");
         this.commitCommand();
+    }
+
+    reset(): void {
+        this.generated = [];
     }
 
     toString(): string {

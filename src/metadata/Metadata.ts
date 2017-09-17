@@ -60,8 +60,8 @@ export function getClassMetadata(constructor: Constructor) {
  */
 export function createPropertyDecorator<T>(name: string) {
     return function (value: T) {
-        return function (type: any, property: PropertyDescriptor) {
-            getMetadata(type.constructor, property).set(name, value);
+        return function (type: any, property: any) {
+            getMetadata(type.constructor, property as PropertyDescriptor).set(name, value);
         }
     }
 }

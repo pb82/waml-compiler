@@ -40,7 +40,11 @@ export class Analyzer implements TokenSource {
                 } else if (firstChar === firstChar.toUpperCase()) {
                     token.type = TOKEN_TYPE.CLASS;
                 } else {
-                    token.type = TOKEN_TYPE.NAME;
+                    if (token.value === "true" || token.value === "false") {
+                        token.type = TOKEN_TYPE.BOOLEAN;
+                    } else {
+                        token.type = TOKEN_TYPE.NAME;
+                    }
                 }
             }
             return token;

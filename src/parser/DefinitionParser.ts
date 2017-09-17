@@ -9,6 +9,7 @@ import {NumberParser} from "./NumberParser";
 import {StringParser} from "./StringParser";
 import {UnknownPropertyError} from "../errors/UnknownPropertyError";
 import {ExpressionParser} from "./ExpressionParser";
+import {BooleanParser} from "./BooleanParser";
 
 export class DefinitionParser extends Parser implements Parsing {
     private definedProperties: string[] = [];
@@ -43,6 +44,8 @@ export class DefinitionParser extends Parser implements Parsing {
                 return new StringParser(this.tokens);
             case "expression":
                 return new ExpressionParser(this.tokens);
+            case "boolean":
+                return new BooleanParser(this.tokens);
             default:
                 throw new UnexpectedTokenError(this.tokens.peek());
         }
@@ -87,6 +90,10 @@ export class DefinitionParser extends Parser implements Parsing {
         const instance = new Constructor();
 
         const classMetadata = getClassMetadata(Constructor);
+        if (!classMetadata.get("IsDefinition")) {
+            throw new UnexpectedTokenError(type, TOKEN_TYPE.CLASS);
+        }
+
         const propsMetadata = getPropertyMetadata(Constructor);
 
         let name;

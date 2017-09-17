@@ -1,1 +1,0 @@
-{"version":3,"file":"NumberNode.js","sourceRoot":"","sources":["../../../../src/parser/types/impls/NumberNode.ts"],"names":[],"mappings":";;AAIA;IAGI,YAAY,MAAa;QACrB,IAAI,CAAC,KAAK,GAAG,UAAU,CAAC,MAAM,CAAC,KAAK,CAAC,CAAC;IAC1C,CAAC;IAED,YAAY,CAAC,MAAc;QACvB,MAAM,CAAC,WAAW,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC;IACnC,CAAC;CACJ;AAVD,6BAUC"}

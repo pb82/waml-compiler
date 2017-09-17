@@ -1,1 +1,0 @@
-{"version":3,"file":"StringNode.js","sourceRoot":"","sources":["../../../../src/parser/types/impls/StringNode.ts"],"names":[],"mappings":";;AAIA;IAGI,YAAY,MAAa;QACrB,IAAI,CAAC,KAAK,GAAG,MAAM,CAAC,KAAK,CAAC;IAC9B,CAAC;IAED,YAAY,CAAC,MAAc;QACvB,MAAM,CAAC,WAAW,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC;IACnC,CAAC;CACJ;AAVD,6BAUC"}
