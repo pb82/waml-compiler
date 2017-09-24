@@ -10,7 +10,7 @@ import {IsDefinition} from "../../../metadata/IsDefinition";
 @IsDefinition(true)
 @AllowAnon(false)
 export default class Constant extends Definition implements ASTNode {
-    @Type("expression")
+    @Type("array")
     @Required(true)
     public value: ASTNode;
 

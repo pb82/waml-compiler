@@ -4,6 +4,7 @@ import {ASTNode} from "./types/ASTNode";
 import {TOKEN_TYPE} from "../tokenizer/Definitions";
 import ArrayNode from "./types/impls/ArrayNode";
 import {ExpressionParser} from "./ExpressionParser";
+import ArrayExpressionNode from "./types/impls/ArrayExpressionNode";
 
 export class ArrayParser extends Parser implements Parsing {
     constructor(tokens: TokenProvider) {
@@ -45,7 +46,17 @@ export class ArrayParser extends Parser implements Parsing {
     }
 
     parseArrayExpression(): ASTNode {
-        return null;
+        this.tokens.expect(TOKEN_TYPE.LSQUARE);
+        const array: ArrayExpressionNode = new ArrayExpressionNode();
+        array.variable = this.tokens.expect(TOKEN_TYPE.NAME).value;
+        this.tokens.expect(TOKEN_TYPE.COMMA);
+        array.from = this.readExpression();
+        this.tokens.expectName("to");
+        array.to = this.readExpression();
+        this.tokens.expect(TOKEN_TYPE.COMMA);
+        array.body = this.readExpression();
+        this.tokens.expect(TOKEN_TYPE.RSQUARE);
+        return array;
     }
 
     private readExpression(): ASTNode {

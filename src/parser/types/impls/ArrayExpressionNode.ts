@@ -4,7 +4,9 @@ import {Writer} from "../../../writer/Writer";
 export default class ArrayExpressionNode implements ASTNode {
     public variable: string;
 
-    public value: ASTNode[] = [];
+    public from: ASTNode;
+    public to: ASTNode;
+    public body: ASTNode;
 
     generateCode(writer: Writer): void {
     }

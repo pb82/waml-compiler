@@ -9,6 +9,6 @@
   "author": "Peter Braun <peter-braun@gmx.net>",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^7.0.27"
+    "@types/node": "^7.0.39"
   }
 }

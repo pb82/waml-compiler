@@ -12,6 +12,7 @@
     "watch": true,
     "module": "CommonJS",
     "sourceMap": true,
+    "noStrictGenericChecks": true,
     "typeRoots": [
       "node_modules/@types"
     ]

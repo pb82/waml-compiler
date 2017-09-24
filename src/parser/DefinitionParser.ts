@@ -10,6 +10,7 @@ import {StringParser} from "./StringParser";
 import {UnknownPropertyError} from "../errors/UnknownPropertyError";
 import {ExpressionParser} from "./ExpressionParser";
 import {BooleanParser} from "./BooleanParser";
+import {ArrayParser} from "./ArrayParser";
 
 export class DefinitionParser extends Parser implements Parsing {
     private definedProperties: string[] = [];
@@ -46,6 +47,8 @@ export class DefinitionParser extends Parser implements Parsing {
                 return new ExpressionParser(this.tokens);
             case "boolean":
                 return new BooleanParser(this.tokens);
+            case "array":
+                return new ArrayParser(this.tokens);
             default:
                 throw new UnexpectedTokenError(this.tokens.peek());
         }

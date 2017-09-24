@@ -60,6 +60,14 @@ export class TokenProvider {
         throw new UnexpectedTokenError(token, type);
     }
 
+    public expectName(name: string): Token {
+        const token = this.expect(TOKEN_TYPE.NAME);
+        if (token.value === name) {
+            return token;
+        }
+        throw new UnexpectedTokenError(token, TOKEN_TYPE.NAME);
+    }
+
     public takeIf(type: TOKEN_TYPE): Token {
         if (this.peekIf(type)) {
             return this.next();
